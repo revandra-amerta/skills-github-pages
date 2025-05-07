@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Pesan Untukmu</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(to right, #c9ffbf, #ffafbd);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      text-align: center;
+      padding: 20px;
+    }
+    .pesan-box {
+      background-color: white;
+      padding: 30px;
+      border-radius: 15px;
+      box-shadow: 0 0 20px rgba(0,0,0,0.2);
+      max-width: 600px;
+      width: 100%;
+      animation: fadeIn 1.5s ease;
+    }
+    .pesan-text {
+      font-size: 18px;
+      color: #333;
+      white-space: pre-line;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body>
+  <div class="pesan-box">
+    <h2>Pesan Untukmu</h2>
+    <p class="pesan-text" id="typing"></p>
+  </div>
+
+  <script>
+    const params = new URLSearchParams(window.location.search);
+    const pesan = decodeURIComponent(params.get("msg") || "Maafkan aku, atas segala kekurang ajaran dan ketidakbijaksanaanku. Aku sadar,  curahan hatiku sebelumnya terlalu mentah,  terlalu emosional, dan mungkin terasa menyakitkan bagimu. Aku bermaksud jujur tentang perasaanku dan bagaimana aku berjuang dengan ambisi dan masa laluku, namun caraku menyampaikannya sangatlah salah.  Aku seharusnya lebih bijak dan memahami perasaanmu. Aku tidak bermaksud untuk memaksamu atau membuatmu merasa tertekan.  Aku mengerti trauma yang kau alami dan betapa sulitnya bagimu untuk membuka diri dalam sebuah hubungan.  Aku seharusnya menghormati itu dan tidak memaksakan perasaanku.  Menandai dan memposting tentangmu di TikTok, sungguh sebuah tindakan yang tidak seharusnya kulakukan.  Itu adalah tindakan yang egois dan tidak sensitif. Aku menyadari bahwa itu telah melukaimu dan membuatmu merasa tidak nyaman, dan untuk itu aku memohon maaf yang sebesar-besarnya.  Melihatmu memblokir akunku, walau sakit,  membuatku sadar betapa besar kesalahanku.Aku menghargai kejujuran dan keterbukaanmu, dan aku menyesal telah mengabaikannya.  Aku seharusnya lebih mempertimbangkan perasaanmu dan tidak bertindak gegabah.  Aku belajar dari kesalahan ini dan berjanji untuk lebih bertanggung jawab atas perasaanku dan perbuatanku di masa depan.  Aku ingin fokus pada ambisiku, namun aku juga belajar bahwa kesuksesan sejati juga membutuhkan keseimbangan emosi dan hubungan yang sehat.  Aku akan berusaha untuk memperbaiki diri dan menjadi pribadi yang lebih baik. Sekali lagi, aku mohon maaf atas rasa sakit dan ketidaknyamanan yang telah kuberikan.  Semoga kau bisa memaafkanku.");
+    const textEl = document.getElementById("typing");
+
+    let i = 0;
+    function ketik() {
+      if (i < pesan.length) {
+        textEl.innerHTML += pesan.charAt(i);
+        i++;
+        setTimeout(ketik, 60); // kecepatan efek mengetik
+      }
+    }
+    ketik();
+  </script>
+</body>
+</html>
